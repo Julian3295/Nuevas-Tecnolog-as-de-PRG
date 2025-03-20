@@ -39,7 +39,7 @@ def iniciar_sesion():
     print("Has excedido el número máximo de intentos.")
     return None
 
-def menu_estudiante(nombre):
+def menu_Listado_de_estudiante(nombre):
     while True:
         print("\n--- Menú Estudiante ---")
         print("1. Consultar notas")
