@@ -1,4 +1,6 @@
-# Base de datos simulada
+import hashlib
+
+
 usuarios = {}
 notas_estudiantes = {}
 
@@ -21,6 +23,21 @@ def iniciar_sesion():
     else:
         print("Credenciales incorrectas.")
         return None
+    
+def iniciar_sesion():
+    intentos = 3
+    while intentos > 0:
+        nombre = input("Ingrese su nombre: ")
+        contraseña = input("Ingrese su contraseña: ")
+        hashed_password = hashlib.sha256(contraseña.encode()).hexdigest()
+        if nombre in usuarios and usuarios[nombre]['contraseña'] == hashed_password:
+            print(f"Bienvenido, {nombre}.")
+            return nombre
+        else:
+            intentos -= 1
+            print(f"Credenciales incorrectas. Te quedan {intentos} intentos.")
+    print("Has excedido el número máximo de intentos.")
+    return None
 
 def menu_estudiante(nombre):
     while True:
@@ -83,5 +100,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    #hola 
