@@ -61,3 +61,13 @@ def iniciar_sesion():
     else:
         menu_profesor(usuario)
 
+def menu_estudiante(usuario):
+    print(f"\n--- Menú Estudiante: {usuario} ---")
+    # Lógica específica para estudiantes
+
+def menu_profesor(usuario):
+    print(f"\n--- Menú Profesor: {usuario} ---")
+    # Lógica específica para profesores
+
+if __name__ == "__main__":
+    main()
