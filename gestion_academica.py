@@ -1,6 +1,5 @@
 import hashlib
 
-# Almacenamiento simulado (mejoraría con una base de datos)
 usuarios = {}
 
 def main():
@@ -63,11 +62,11 @@ def iniciar_sesion():
 
 def menu_estudiante(usuario):
     print(f"\n--- Menú Estudiante: {usuario} ---")
-    # Lógica específica para estudiantes
+    # Lógica estudiantes
 
 def menu_profesor(usuario):
     print(f"\n--- Menú Profesor: {usuario} ---")
-    # Lógica específica para profesores
+    # Lógica profes
 
 if __name__ == "__main__":
     main()
