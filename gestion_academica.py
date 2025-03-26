@@ -15,14 +15,19 @@ def registrar_usuario():
     print(f"Usuario {nombre} registrado exitosamente.")
 
 def iniciar_sesion():
-    nombre = input("Ingrese su nombre: ")
-    contraseña = input("Ingrese su contraseña: ")
-    if nombre in usuarios and usuarios[nombre]['contraseña'] == contraseña:
-        print(f"Bienvenido, {nombre}.")
-        return nombre
-    else:
-        print("Credenciales incorrectas.")
-        return None
+    intentos = 3
+    while intentos > 0:
+        nombre = input("Ingrese su nombre: ")
+        contraseña = input("Ingrese su contraseña: ")
+        hashed_password = hashlib.sha256(contraseña.encode()).hexdigest()
+        if nombre in usuarios and usuarios[nombre]['contraseña'] == hashed_password:
+            print(f"Bienvenido, {nombre}.")
+            return nombre
+        else:
+            intentos -= 1
+            print(f"Credenciales incorrectas. Te quedan {intentos} intentos.")
+    print("Has excedido el número máximo de intentos.")
+    return None
     
 def iniciar_sesion():
     intentos = 3
@@ -89,7 +94,7 @@ def main():
             usuario = iniciar_sesion()
             if usuario:
                 if usuarios[usuario]['tipo'] == 'E':
-                    menu_estudiante(usuario)
+                    menu_Listado_de_estudiante(usuario)
                 elif usuarios[usuario]['tipo'] == 'P':
                     menu_profesor()
         elif opcion == "3":
@@ -97,6 +102,3 @@ def main():
             break
         else:
             print("Opción no válida.")
-
-if __name__ == "__main__":
-    main()
