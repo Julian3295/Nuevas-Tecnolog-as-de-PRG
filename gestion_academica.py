@@ -42,5 +42,22 @@ def registrar_usuario():
     usuarios[usuario] = {"contraseña": hash_contraseña, "tipo": tipo}
     print("¡Registro exitoso!")
 
+def iniciar_sesion():
+    usuario = input("Usuario: ").strip()
+    contraseña = input("Contraseña: ").strip()
 
+    if usuario not in usuarios:
+        print("Usuario no encontrado.")
+        return
+
+    hash_contraseña = hashlib.sha256(contraseña.encode()).hexdigest()
+    if usuarios[usuario]["contraseña"] != hash_contraseña:
+        print("Contraseña incorrecta.")
+        return
+
+    print(f"Bienvenido, {usuario}!")
+    if usuarios[usuario]["tipo"] == "E":
+        menu_estudiante(usuario)
+    else:
+        menu_profesor(usuario)
 
